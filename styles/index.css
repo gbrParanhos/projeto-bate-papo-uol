@@ -1,4 +1,4 @@
-body {
+* {
   box-sizing: border-box;
 }
 
@@ -18,7 +18,7 @@ header {
   align-items: center;
   padding: 0px 20px;
   height: 80px;
-  width: calc(100% - 40px);
+  width: 100%;
   top: 0;
   box-shadow: 0px 4px 6px 0px #0000000D;
   img {
@@ -30,11 +30,44 @@ header {
 }
 
 main {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f3f3f3;
+  padding: 100px 0 84px 0;
 }
 
-footer {
+ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+li {
+  display: flex;
+  min-height: 40px;
+  padding: 10px;
+  p {
+    line-height: 20px;
+    font-size: 14px;
+  }
+  span {
+    font-size: 14px;
+    color: #AAAAAA;
+  }
+}
+
+.status-message {
+  background-color: #dcdcdc;
+}
+
+.global-message {
+  background-color: white;
+}
+
+.direct-message {
+  background-color: #FFDEDE;
+}
+
+form {
   display: flex;
   position: fixed;
   background-color: white;
@@ -42,28 +75,30 @@ footer {
   align-items: center;
   padding: 0px 20px;
   height: 80px;
-  width: calc(100% - 40px);
+  width: 100%;
   bottom: 0;
   box-shadow: 0px -4px 6px 0px #0000000D;
+  column-gap: 15px;
   .text-box {
     display: flex;
     flex-direction: column;
+    width: 80%;
     row-gap: 10px;
-  }
-  input {
-    &::placeholder {
-      color: black;
+    input {
+      font-family: Roboto;
+      background-color: none;
+      font-size: 18px;
+      padding: 0;
+      border: none;
+      &::placeholder {
+        color: black;
+        font-style: italic;
+      }
     }
-    font-family: Roboto;
-    background-color: none;
-    font-style: italic;
-    font-size: 18px;
-    padding: 0;
-    border: none;
-  }
-  span {
-    font-size: 14px;
-    font-weight: 300;
+    span {
+      font-size: 14px;
+      font-weight: 300;
+    }
   }
   ion-icon {
     font-size: 26px;
