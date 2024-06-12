@@ -13,115 +13,155 @@
     <title>Bate-papo Uol</title>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <img src="assets/bate-papo-uol.png" alt="">
-        <ion-icon name="people"></ion-icon>
-      </header>
-      <main>
-        <ul class="messages">
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
+    <div class="overlay">
+      <div class="settings">
+        <span>Escolha um contato para enviar mensagem:</span>
+        <ul class="peoples">
+          <li class="all-peoples">
+            <div class="selection">
+              <ion-icon name="people"></ion-icon>
+              <p>Todos</p>
+            </div>
+            <img src="assets/Vector.svg" alt="">
           </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
+          <li class="direct-people">
+            <div class="selection">
+              <ion-icon name="person-circle"></ion-icon>
+              <p>João</p>
+            </div>
           </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
+          <li class="direct-people">
+            <div class="selection">
+              <ion-icon name="person-circle"></ion-icon>
+              <p>Maria</p>
+            </div>
           </li>
-          <li class="direct-message">
-            <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
-          </li>
-          <li class="direct-message">
-            <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
-          </li>
-          <li class="direct-message">
-            <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
-          </li>
-          <li class="direct-message">
-            <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
-          </li>
-          <li class="direct-message">
-            <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
-          </li>
-          <li class="global-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
-          </li>
-          <li class="direct-message">
-            <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
-          </li>
-          <li class="status-message">
-            <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
-          </li>
-          
         </ul>
-      </main>
-      <form>
-        <div class="text-box">
-          <input placeholder="Escreva aqui..." type="text"></input>
-          <span>Eviando para Todos (público)</span>
-        </div>
-        <button type="submit">
-          <ion-icon name="paper-plane-outline"></ion-icon>
-        </button>
-      </form>
+        <span>Escolha a visibilidade:</span>
+        <ul class="visibility">
+          <li class="public">
+            <div class="selection">
+              <ion-icon name="lock-open"></ion-icon>
+              <p>Público</p>
+            </div>
+            <img src="assets/Vector.svg" alt="">
+          </li>
+          <li class="direct">
+            <div class="selection">
+              <ion-icon name="lock-open"></ion-icon>
+              <p>Reservadamente</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
+    <header>
+      <img src="assets/bate-papo-uol.png" alt="">
+      <ion-icon name="people"></ion-icon>
+    </header>
+    <main>
+      <ul class="messages">
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
+        </li>
+        <li class="direct-message">
+          <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
+        </li>
+        <li class="direct-message">
+          <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
+        </li>
+        <li class="direct-message">
+          <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
+        </li>
+        <li class="direct-message">
+          <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
+        </li>
+        <li class="direct-message">
+          <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>João </strong>entra na sala...</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>João </strong>para <strong>Todos: </strong>Bom dia</p>
+        </li>
+        <li class="global-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>para <strong>João: </strong>Oi João :)</p>
+        </li>
+        <li class="direct-message">
+          <p><span>(09:22:28) </span><strong>João </strong>reservadamente para <strong>Maria: </strong>Oi gatinha quer tc?</p>
+        </li>
+        <li class="status-message">
+          <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
+        </li>
+        
+      </ul>
+    </main>
+    <form>
+      <div class="text-box">
+        <input placeholder="Escreva aqui..." type="text"></input>
+        <span>Eviando para Todos (público)</span>
+      </div>
+      <button type="submit">
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </button>
+    </form>
   </body>
 </html>
