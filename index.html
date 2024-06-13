@@ -9,55 +9,59 @@
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/index.css">
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script defer src='main.js'></script>
     <title>Bate-papo Uol</title>
   </head>
   <body>
-    <div class="overlay">
-      <div class="settings">
-        <span>Escolha um contato para enviar mensagem:</span>
-        <ul class="peoples">
-          <li class="all-peoples">
-            <div class="selection">
-              <ion-icon name="people"></ion-icon>
-              <p>Todos</p>
-            </div>
-            <img src="assets/Vector.svg" alt="">
-          </li>
-          <li class="direct-people">
-            <div class="selection">
-              <ion-icon name="person-circle"></ion-icon>
-              <p>João</p>
-            </div>
-          </li>
-          <li class="direct-people">
-            <div class="selection">
-              <ion-icon name="person-circle"></ion-icon>
-              <p>Maria</p>
-            </div>
-          </li>
-        </ul>
-        <span>Escolha a visibilidade:</span>
-        <ul class="visibility">
-          <li class="public">
-            <div class="selection">
-              <ion-icon name="lock-open"></ion-icon>
-              <p>Público</p>
-            </div>
-            <img src="assets/Vector.svg" alt="">
-          </li>
-          <li class="direct">
-            <div class="selection">
-              <ion-icon name="lock-open"></ion-icon>
-              <p>Reservadamente</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="overlay hidden" onclick="closeSettings()">
+    </div>
+    <div class="settings hidden">
+      <span>Escolha um contato para enviar mensagem:</span>
+      <ul class="peoples">
+        <li onclick="selectPeople(this)" class="all-peoples">
+          <div class="selection">
+            <ion-icon name="people"></ion-icon>
+            <p>Todos</p>
+          </div>
+          <img src="assets/Vector.svg" alt="">
+        </li>
+        <li onclick="selectPeople(this)" class="direct-people">
+          <div class="selection">
+            <ion-icon name="person-circle"></ion-icon>
+            <p>João</p>
+          </div>
+          <img class="hidden" src="assets/Vector.svg" alt="">
+        </li>
+        <li onclick="selectPeople(this)" class="direct-people">
+          <div class="selection">
+            <ion-icon name="person-circle"></ion-icon>
+            <p>Maria</p>
+          </div>
+          <img class="hidden" src="assets/Vector.svg" alt="">
+        </li>
+      </ul>
+      <span>Escolha a visibilidade:</span>
+      <ul class="visibility">
+        <li onclick="selectVisibility(this)" class="public">
+          <div class="selection">
+            <ion-icon name="lock-open"></ion-icon>
+            <p>Público</p>
+          </div>
+          <img src="assets/Vector.svg" alt="">
+        </li>
+        <li onclick="selectVisibility(this)" class="direct">
+          <div class="selection">
+            <ion-icon name="lock-open"></ion-icon>
+            <p>Reservadamente</p>
+          </div>
+          <img class="hidden" src="assets/Vector.svg" alt="">
+        </li>
+      </ul>
     </div>
     <header>
       <img src="assets/bate-papo-uol.png" alt="">
-      <ion-icon name="people"></ion-icon>
+      <ion-icon name="people" onclick="openSettings()"></ion-icon>
     </header>
     <main>
       <ul class="messages">
@@ -151,7 +155,6 @@
         <li class="status-message">
           <p><span>(09:22:28) </span><strong>Maria </strong>sai da sala...</p>
         </li>
-        
       </ul>
     </main>
     <form>
