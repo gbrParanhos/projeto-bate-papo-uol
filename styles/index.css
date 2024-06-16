@@ -109,6 +109,12 @@ form {
   background-color: #00000099;
   width: 100vw;
   height: 100vh;
+  transition: all .3s;
+}
+
+.overlay.hidden {
+  z-index: -1;
+  opacity: 0;
 }
 
 .settings {
@@ -119,9 +125,10 @@ form {
   flex-direction: column;
   background-color: white;
   height: 100vh;
-  width: 70%;
+  width: 70vw;
   padding: 25px;
   row-gap: 25px;
+  transition: all .3s;
   ul{
     display: flex;
     flex-direction: column;
@@ -136,23 +143,31 @@ form {
       align-items: center;
       column-gap: 5px;
     }
-    img {
+    svg {
       height: 11px;
+      stroke: #28BB25;
+      transition: all .3s;
+    }
+    svg.hidden {
+      stroke: transparent;
+      transform: rotate(-180deg);
     }
   }
   span {
     font-size: 16px;
     font-weight: 700;
     line-height: 19px;
+    min-width: calc(70vw - 50px);
     text-align: center;
   }
   p {
     font-size: 16px;
     font-weight: 19px;
+    min-width: calc(70vw - 100px);
   }
   .peoples {
     ion-icon {
-      font-size: 25px;
+      font-size: 22px;
     }
   }
   .visibility {
@@ -162,6 +177,8 @@ form {
   }
 }
 
-.hidden {
-  display: none;
+.settings.hidden {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
