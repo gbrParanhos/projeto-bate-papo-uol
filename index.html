@@ -24,21 +24,27 @@
             <ion-icon name="people"></ion-icon>
             <p>Todos</p>
           </div>
-          <img src="assets/Vector.svg" alt="">
+          <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 2L4.7 9L2 6.375" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </li>
         <li onclick="selectPeople(this)" class="direct-people">
           <div class="selection">
             <ion-icon name="person-circle"></ion-icon>
-            <p>João</p>
+            <p>João Carlos</p>
           </div>
-          <img class="hidden" src="assets/Vector.svg" alt="">
+          <svg class="hidden" width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 2L4.7 9L2 6.375" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </li>
         <li onclick="selectPeople(this)" class="direct-people">
           <div class="selection">
             <ion-icon name="person-circle"></ion-icon>
-            <p>Maria</p>
+            <p>Maria Eduarda</p>
           </div>
-          <img class="hidden" src="assets/Vector.svg" alt="">
+          <svg class="hidden" width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 2L4.7 9L2 6.375" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </li>
       </ul>
       <span>Escolha a visibilidade:</span>
@@ -48,14 +54,18 @@
             <ion-icon name="lock-open"></ion-icon>
             <p>Público</p>
           </div>
-          <img src="assets/Vector.svg" alt="">
+          <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 2L4.7 9L2 6.375" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </li>
         <li onclick="selectVisibility(this)" class="direct">
           <div class="selection">
             <ion-icon name="lock-open"></ion-icon>
             <p>Reservadamente</p>
           </div>
-          <img class="hidden" src="assets/Vector.svg" alt="">
+          <svg class="hidden" width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 2L4.7 9L2 6.375" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </li>
       </ul>
     </div>
@@ -157,7 +167,7 @@
         </li>
       </ul>
     </main>
-    <form>
+    <form onsubmit="sendMessage(event)">
       <div class="text-box">
         <input placeholder="Escreva aqui..." type="text"></input>
         <span>Eviando para Todos (público)</span>
