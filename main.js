@@ -1,12 +1,76 @@
-const urlParticipants = 'https://mock-api.driven.com.br/api/v6/uol/participants/b29842f4-b480-49f8-94db-fcfd7c422827'
-const urlMessages = 'https://mock-api.driven.com.br/api/v6/uol/messages/b29842f4-b480-49f8-94db-fcfd7c422827'
-const urlStatus = 'https://mock-api.driven.com.br/api/v6/uol/status/b29842f4-b480-49f8-94db-fcfd7c422827'
+const urlParticipants = 'https://mock-api.driven.com.br/api/v6/uol/participants/d18d1c75-757d-4538-9a42-fd1d44d041ca'
+const urlMessages = 'https://mock-api.driven.com.br/api/v6/uol/messages/d18d1c75-757d-4538-9a42-fd1d44d041ca'
+const urlStatus = 'https://mock-api.driven.com.br/api/v6/uol/status/d18d1c75-757d-4538-9a42-fd1d44d041ca'
 const overlay = document.querySelector('.overlay');
 const settings = document.querySelector('.settings');
-let peopleSelected = document.querySelector('.all-peoples');
-let visibilitySelected = document.querySelector('.public');
-let ultimaMensagem = document.querySelector('.messages').lastElementChild;
-ultimaMensagem.scrollIntoView();
+const olMessages = document.querySelector('.messages');
+const allPeoples = document.querySelector('.all-peoples');
+const peoples = document.querySelector('.peoples');
+const public = document.querySelector('.public');
+const direct = document.querySelector('.direct');
+let visibilitySelected = public;
+let userName;
+let firstMessage = document.querySelector('.messages li');
+let lastMessage = document.querySelector('.messages li');
+let participants = [];
+let messages = [];
+let typeMessage = {
+  'message': 'para',
+  'private_message':'reservadamente para'
+}
+
+const joinRoom = () => {
+  userName = {name: prompt('Como deseja ser chamado?')}
+  if (!userName.name) {
+    joinRoom();
+  }
+  axios.post(urlParticipants,userName)
+  .then(() => {
+    searchMessages();
+    setInterval(searchMessages, 3000);
+    listParticipants();
+    setInterval(listParticipants, 3000);
+    setInterval(keepConnection, 5000);
+  })
+  .catch(error => {
+    if ( error.response.status === 400 ) {
+      alert('Já existe um usuário logado com este nome.');
+    } else {
+      alert('Houve um erro! Tente novamente.')
+    }
+    joinRoom();
+  })
+}
+
+const mapErrorLogin = () => {
+}
+
+const keepConnection = () => {
+  axios.post(urlStatus,userName);
+}
+
+const listParticipants = () => {
+  axios.get(urlParticipants)
+  .then(response => {
+    participants = [];
+    response.data.forEach(formatParticipants);
+    peoples.innerHTML = participants.join('');
+  })
+}
+
+const formatParticipants = (participant) => {
+  if(participant.name !== userName.name) {
+  participants.push(`<li onclick="selectPeople(this)" class="direct-people ${participant.name === document.querySelector('.selected-people p').innerHTML?"selected-people":''}">
+    <div class="selection">
+      <ion-icon name="person-circle"></ion-icon>
+      <p>${participant.name}</p>
+    </div>
+    <svg ${participant.name !== document.querySelector('.selected-people p').innerHTML?"class='hidden'":''} width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11 2L4.7 9L2 6.375" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </li>`)
+  }
+}
 
 const openSettings = () => {
   overlay.classList.remove('hidden');
@@ -19,31 +83,75 @@ const closeSettings = () => {
 }
 
 const selectPeople = (element) => {
-  if (element !== peopleSelected) {
-    peopleSelected.querySelector('svg').classList.add('hidden')
-    peopleSelected = element
-    console.log(peopleSelected)
-    peopleSelected.querySelector('svg').classList.remove('hidden')
+  if ( element !== document.querySelector('.selected-people') ) {
+    document.querySelector('.selected-people svg').classList.add('hidden');
+    document.querySelector('.selected-people').classList.remove('selected-people');
+    element.classList.add('selected-people');
+    element.querySelector('svg').classList.remove('hidden');
+    document.querySelector('form span').innerHTML = `Enviando para ${document.querySelector('.selected-people p').innerHTML} (${visibilitySelected.querySelector('p').innerHTML})`;
+    if ( element.classList.contains('all-peoples') && public.querySelector('svg').classList.contains('hidden') ) {
+      direct.querySelector('svg').classList.add('hidden');
+      public.querySelector('svg').classList.remove('hidden');
+      visibilitySelected = public;
+      document.querySelector('form span').innerHTML = `Enviando para ${document.querySelector('.selected-people p').innerHTML} (${visibilitySelected.querySelector('p').innerHTML})`;
+    }
   }
 }
 
 const selectVisibility = (element) => {
-  if (element !== visibilitySelected) {
-    visibilitySelected.querySelector('svg').classList.add('hidden')
-    visibilitySelected = element
-    console.log(visibilitySelected)
-    visibilitySelected.querySelector('svg').classList.remove('hidden')
+  if ( element !== visibilitySelected && allPeoples.querySelector('svg').classList.contains('hidden') ) {
+    visibilitySelected.querySelector('svg').classList.add('hidden');
+    visibilitySelected = element;
+    visibilitySelected.querySelector('svg').classList.remove('hidden');
+    document.querySelector('form span').innerHTML = `Enviando para ${document.querySelector('.selected-people p').innerHTML} (${visibilitySelected.querySelector('p').innerHTML})`;
+  } else if ( !allPeoples.querySelector('svg').classList.contains('hidden') ) {
+    alert('Não é possível enviar uma mensagem Reservadamente para Todos');
   }
 }
 
 const searchMessages = () => {
-  const promisse = axios.get(urlMessages,);
-  promisse.then(res => console.log(res));
+  axios.get(urlMessages)
+  .then(response => {
+    const differentFirstMessage = firstMessage.querySelector('span').innerHTML !== `(${response.data[0].time})`;
+    const differentLastMessage = lastMessage.querySelector('span').innerHTML !== `(${response.data[response.data.length-1].time})`
+    if(differentFirstMessage || differentLastMessage) {
+      messages = response.data.map(formatMessages);
+      const filteredMessages = messages.filter( message => !message.includes('private_message') || message.includes(`<strong> ${userName.name} </strong>`) || message.includes(`<strong>${userName.name}: </strong>`) );
+      printMessages(filteredMessages);
+    }
+  })
+}
+
+const formatMessages = (message) => {
+  return `
+  <li class="${message.type}">
+  <p><span>(${message.time})</span><strong> ${message.from} </strong>${message.type!=='status'?`${typeMessage[message.type]} <strong>${message.to}: </strong>`:''}${message.text}</p>
+  </li>
+  `
+}
+
+const printMessages = (filteredMessages) => {
+  olMessages.innerHTML = filteredMessages.join('')
+  firstMessage = document.querySelector('.messages').firstElementChild;
+  lastMessage = document.querySelector('.messages').lastElementChild;
+  lastMessage.scrollIntoView();
 }
 
 const sendMessage = (event) => {
-  event.preventDefault()
-  console.log(event)
+  event.preventDefault();
+  const peopleSelectedName = document.querySelector('.selected-people p').innerHTML;
+  const visibilitySelectedName = visibilitySelected.querySelector('p').innerHTML;
+  const messageObj = {
+    from: userName.name,
+    to: peopleSelectedName,
+    text: event.target[0].value,
+    type: visibilitySelectedName==='Reservadamente'?"private_message":"message"
+  }
+  axios.post(urlMessages,messageObj)
+  .then(() => {
+    document.querySelector('input').value = '';
+    searchMessages();
+  })
 }
 
-searchMessages()
+joinRoom()

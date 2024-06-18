@@ -33,7 +33,7 @@ main {
   min-height: 100vh;
   background-color: #f3f3f3;
   padding: 100px 0 84px 0;
-  ul {
+  ol {
     display: flex;
     flex-direction: column;
     row-gap: 4px;
@@ -53,15 +53,15 @@ main {
   }
 }
 
-.status-message {
+.status {
   background-color: #dcdcdc;
 }
 
-.global-message {
+.message {
   background-color: white;
 }
 
-.direct-message {
+.private_message {
   background-color: #FFDEDE;
 }
 
@@ -129,10 +129,40 @@ form {
   padding: 25px;
   row-gap: 25px;
   transition: all .3s;
-  ul{
+  .container-all-peoples {
+    display: flex;
+    flex-direction: column;
+    ion-icon {
+      font-size: 22px;
+    }
+  }
+  .all-peoples {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -13px;
+    .selection {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+    }
+    svg {
+      height: 11px;
+      stroke: #28BB25;
+      transition: all .3s;
+    }
+    svg.hidden {
+      stroke: transparent;
+      transform: rotate(-180deg);
+    }
+  }
+  ul {
     display: flex;
     flex-direction: column;
     row-gap: 12px;
+    ion-icon {
+      font-size: 22px;
+    }
   }
   li {
     display: flex;
@@ -164,11 +194,6 @@ form {
     font-size: 16px;
     font-weight: 19px;
     min-width: calc(70vw - 100px);
-  }
-  .peoples {
-    ion-icon {
-      font-size: 22px;
-    }
   }
   .visibility {
     ion-icon {
