@@ -116,7 +116,11 @@ const searchMessages = () => {
     const differentLastMessage = lastMessage.querySelector('span').innerHTML !== `(${response.data[response.data.length-1].time})`
     if(differentFirstMessage || differentLastMessage) {
       messages = response.data.map(formatMessages);
-      const filteredMessages = messages.filter( message => !message.includes('private_message') || message.includes(`<strong> ${userName.name} </strong>`) || message.includes(`<strong>${userName.name}: </strong>`) );
+      const filteredMessages = messages.filter( message => (
+        !message.includes('private_message') ||
+        message.includes(`<strong> ${userName.name} </strong>`) ||
+        message.includes(`<strong>${userName.name}: </strong>`)
+      ));
       printMessages(filteredMessages);
     }
   })
@@ -152,6 +156,7 @@ const sendMessage = (event) => {
     document.querySelector('input').value = '';
     searchMessages();
   })
+  .catch(() => window.location.reload())
 }
 
 joinRoom()
