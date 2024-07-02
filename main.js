@@ -127,9 +127,12 @@ const searchMessages = () => {
 }
 
 const formatMessages = (message) => {
+  const timeNumber = Number(message.time.replace(/\:/g,''))-30000
+  const timeString = timeNumber.toString().padStart(6, '0');
+  const formattedTime = `${timeString.slice(0, 2)}:${timeString.slice(2, 4)}:${timeString.slice(4, 6)}`
   return `
   <li class="${message.type}">
-  <p><span>(${message.time})</span><strong> ${message.from} </strong>${message.type!=='status'?`${typeMessage[message.type]} <strong>${message.to}: </strong>`:''}${message.text}</p>
+  <p><span>(${formattedTime})</span><strong> ${message.from} </strong>${message.type!=='status'?`${typeMessage[message.type]} <strong>${message.to}: </strong>`:''}${message.text}</p>
   </li>
   `
 }
